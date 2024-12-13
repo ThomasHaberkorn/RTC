@@ -1,0 +1,20 @@
+<h1>WebRTC Video Chat</h1>
+<div>
+    <video #localVideo autoplay muted playsinline></video>
+    <video #remoteVideo autoplay playsinline></video>
+</div>
+
+<div class="lowerDiv">
+    <!-- Offer/Answer Ausgabe -->
+    <h3>Offer/Answer</h3>
+    <textarea #offerOutput readonly class="offerOutput">{{ currentOffer }}</textarea>
+    <button (click)="createOffer()">Create Offer</button>
+    <button (click)="setRemoteDescription(parseSDP(offerInput.value))">Set Remote Description</button>
+    <textarea placeholder="Paste SDP here" #offerInput></textarea>
+
+    <!-- ICE-Kandidaten Ausgabe -->
+    <h3 class="iceCand">ICE Candidates</h3>
+    <textarea #iceOutput readonly class="iceOutput">{{ currentIceCandidate }}</textarea>
+    <textarea placeholder="Paste ICE Candidate here" #iceInput></textarea>
+    <button (click)="addParsedIceCandidate(iceInput.value)">Add ICE Candidate</button>
+</div>
